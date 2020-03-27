@@ -1,0 +1,15 @@
+# serverless.yml
+
+service: stargazing
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  environment:
+    WEBHOOK_URL: ${env:SLACK_STARGAZER}
+
+functions:
+  stargazer:
+    handler: handler.stargazer
+    events:
+      - http: POST stargazer
